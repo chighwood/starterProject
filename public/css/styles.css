@@ -4,3 +4,356 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* General styles */
+
+/* Header */
+
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 20px;
+}
+
+.siteName a {
+  font-size: 24px;
+  font-weight: bold;
+  color: black;
+  text-decoration: none;
+}
+
+#tools a {
+  font-size: 14px;
+  color: black;
+  text-decoration: none;
+  padding: 5px 15px;
+  align-self: flex-start;
+}
+
+#tools a:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+
+/* Header Navigation */
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: x-small;
+  background-color: black;
+  color: white;
+  list-style-type: none;
+  max-width: 100%;
+}
+
+ul.navMenu.active {
+  display: block;
+}
+
+li.active a {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+nav ul li a {
+  font-size: 1.5rem;
+  display: block;
+  padding: 1rem;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: small;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header, main, footer {
+  padding: 1rem;
+}
+
+#sitename {
+  font-size: 1.5rem;
+  display: block;
+  padding: 1rem;
+  color: #fff;
+  text-decoration: none;
+  text-align: center;
+  font-size: small;
+}
+
+h1 {
+  font-size: larger;
+}
+
+h2, h3 {
+  text-align: center;
+}
+
+button {
+  background-color: #0099cc;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0077aa;
+}
+
+/* Central container box */
+
+#container {
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.content-sections {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Wrapper styles if needed */
+#wrapper {
+  padding: 10px;
+}
+
+/* Delorean Section */
+.delorean-section {
+  position: relative;
+}
+
+.delorean-info {
+  position: absolute;
+  top: 10%;
+  left: 5%;
+  background-color: rgba(255, 255, 255, 0.9);
+  color: #00bfff;
+  padding: 2px;
+  border-radius: 2px;
+  max-width: 60%;
+  box-sizing: border-box;
+  font-size: small;
+  font-weight: 800;
+}
+
+/* Mobile-first approach: Display mobile image by default */
+.mobile-img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+}
+
+.desktop-img {
+  display: none;
+}
+
+/* Delorean Upgrades and Reviews */
+/* Base mobile styles */
+.upgrades, .reviews {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.reviews {
+  order: -1;
+}
+
+.upgrade-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  justify-items: center;
+}
+
+.upgrade-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.upgrade-box {
+  background-color: #00bfff;
+  padding: 10px;
+  border-radius: 8px;
+  width: 100px; 
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upgrade-box img {
+  width: 80%;
+  height: auto;
+}
+
+.upgrade-item span {
+  color: #0000ee;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+.reviews ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.reviews li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 8px;
+}
+
+
+/* Footer */
+footer {
+  text-align: left;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+}
+
+/* Button styling */
+#own-today {
+  background-color: #00bfff;
+  color:black;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-top: 5px;
+  font-weight: 700;
+}
+
+
+
+/* ************************************************************* */
+/* Media Query for Larger Screens */
+@media (min-width: 768px) {
+
+  h1 {
+    font-size: xx-large;
+  }
+
+  /* Header */  
+
+  #top-header {
+    padding: 10px 20px 40px ;
+  }
+
+  .siteName a {
+    font-size: 32px;
+  }
+
+  #tools a {
+    font-size: 16px;
+    padding: 5px 20px;
+  }
+
+  body {
+    background-image: url('/images/site/checkerboard.jpg'); 
+    background-size: 500px 500px;
+    background-repeat: repeat;
+  }
+
+  /* Header Navigation */
+  nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    font-size: x-large;
+  }
+
+  nav ul li a {
+    font-size: larger;
+  }
+
+  /* Delorean Section - Desktop Layout */
+  .delorean-section {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .delorean-info {
+    text-align: left;
+    top: 30%;
+    left: 5%;
+    padding: 10px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-size: x-large;
+    font-weight: 800;
+  }
+
+  /* Show desktop image and hide mobile image on larger screens */
+  .mobile-img {
+    display: none;
+  }
+
+  .desktop-img {
+    display: block;
+    width: 100%;
+    max-width: 1200px;
+  }
+
+  /* Upgrades and Reviews - Row Layout */
+  .upgrades, .reviews {
+    display: inline-block;
+    width: 46%;
+    vertical-align: top;
+  }
+
+  .reviews {
+    margin-left: 4%;
+    order: 2;
+  }
+
+  .upgrade-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .upgrade-list a {
+    max-width: 120px;
+  }
+
+  /* Container adjustments for larger screens */
+  #container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 6px solid #0099cc;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+  }
+
+  .content-sections {
+    flex-direction: row;
+  }
+
+}
