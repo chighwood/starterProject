@@ -1,10 +1,7 @@
-<% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-    } %>
+<% if (!grid) { %>
+  <p class="notice">No data to display</p>
+<% } else { %>
+  <%- grid %>
+<% } %>
 
-<%# messages() %>
-
-<%- grid %>
 
