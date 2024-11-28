@@ -54,4 +54,4 @@ async function checkExistingEmail(account_email){
 }
 
 
-module.exports = {getClassifications, getInventoryByClassificationId};
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, checkExistingEmail};
