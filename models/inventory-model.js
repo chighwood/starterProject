@@ -25,5 +25,33 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+// Function to get a vehicle by ID
+async function getVehicleById(vehicleId) {
+  try {
+    const result = await pool.query(
+      `SELECT * FROM public.inventory 
+       WHERE inv_id = $1`,
+      [vehicleId]
+    );
+    return result.rows[0];
+  } catch (error) {
+    console.error("Error fetching vehicle by ID: " + error);
+    throw error;
+  }
+}
+
+/* **********************
+ *   Check for existing email
+ * ********************* */
+async function checkExistingEmail(account_email){
+  try {
+    const sql = "SELECT * FROM account WHERE account_email = $1"
+    const email = await pool.query(sql, [account_email])
+    return email.rowCount
+  } catch (error) {
+    return error.message
+  }
+}
+
 
 module.exports = {getClassifications, getInventoryByClassificationId};
