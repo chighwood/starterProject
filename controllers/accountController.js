@@ -7,9 +7,10 @@ const utilities = require('../utilities')
 async function buildLogin(req, res, next) {
     let nav = await utilities.getNav();
     console.log("Nav generated successfully");
-    res.render("account/login", {
+    // res.send("Build Login");
+    res.render("./account/login", {
       title: "Login",
-      nav,
+      nav
     })
   }
   

@@ -247,7 +247,7 @@ footer {
 }
 
 /* ************************************************ */
-/* ************ Vehicle Data and Detail *********** */
+/* ************ Vehicle Class Data *********** */
 
 /* Classification Grid */
 #inv-display {
@@ -325,6 +325,15 @@ hr {
   background-color: black;
   border: none;
 }
+
+/* ************ Vehicle Individual Page Details **************** */
+
+.vehicle-image {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+} 
+
 
 
 

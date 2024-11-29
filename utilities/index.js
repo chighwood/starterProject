@@ -61,9 +61,10 @@ Util.buildClassificationGrid = async function(data) {
 Util.generateVehicleDetailHTML = function (vehicle) {
   return `
     <section class="vehicle-detail">
+      <h1>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h1>
       <img src="${vehicle.inv_image}" alt="${vehicle.inv_make} ${vehicle.inv_model}" class="vehicle-image" />
       <div class="vehicle-info">
-        <h1>${vehicle.inv_year} ${vehicle.inv_make} ${vehicle.inv_model}</h1>
+        <h2 class="details">${vehicle.inv_make} ${vehicle.inv_model} Details/h2>
         <p class="price">Price: $${vehicle.inv_price.toLocaleString()}</p>
         <p class="mileage">Mileage: ${vehicle.inv_miles.toLocaleString()} miles</p>
         <p class="description">${vehicle.inv_description}</p>
