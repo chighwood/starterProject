@@ -334,6 +334,61 @@ hr {
   height: auto;
 } 
 
+/* ***************** Login Form ********************************/
+
+/* Form CSS */
+form {
+  margin: 1rem auto;
+  width: 350px;
+  padding: 15px;
+  background-color: whitesmoke;
+  border-radius: rgb(198, 198, 198);
+  box-shadow: black;
+  justify-content: center;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+
+#login-form {
+  margin: 0 auto;
+}
+
+form>div {
+  margin-bottom: 10px;
+}
+
+form label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+form input[type="password"],
+form input[type="email"],
+form button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+form button[type="submit"] {
+  background-color: silver;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 15px;
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+form button[type="submit"]:hover {
+  background-color: #959596;
+}
+
 
 
 
@@ -462,5 +517,64 @@ hr {
   .vehicle-info {
     flex: 1 1 50%;
   }
+
+  /* **************** Vehicle Details ******************* */
+
+  .vehicle-detail {
+    display: flex;
+    flex-direction: row; /* Side-by-side layout */
+    align-items: flex-start; /* Align content at the top */
+    max-width: 1000px; /* Adjust as needed */
+    margin: 0 auto; /* Center the container */
+    background-color: #f5f5f5; /* Optional background */
+    border-radius: 10px; /* Optional styling */
+    overflow: hidden;
+  }
   
+  .vehicle-image {
+    flex: 1; /* Takes half the container width */
+    max-width: 50%; /* Ensure it doesn't exceed half the width */
+    object-fit: cover; /* Maintain image aspect ratio */
+  }
+  
+  .vehicle-info {
+    flex: 1; /* Takes half the container width */
+    padding: 20px;
+  }
+  
+  .vehicle-info p {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px; /* Optional rounded corners */
+  }
+  
+  /* Alternating background colors for info paragraphs */
+  .vehicle-info p:nth-child(odd) {
+    background-color: #f0f0f0; /* Light background for odd elements */
+  }
+  
+  .vehicle-info p:nth-child(even) {
+    background-color: #e0e0e0; /* Slightly darker background for even elements */
+  }
+  
+  .vehicle-info .details {
+    font-size: 1.5em; /* Larger font for the details heading */
+    font-weight: bold;
+  }
+  
+
+  form {
+    width: 400px; 
+    margin: 0 auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    width: 250px;
+  }
+
+
+
 }
