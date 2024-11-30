@@ -522,46 +522,47 @@ form button[type="submit"]:hover {
 
   .vehicle-detail {
     display: flex;
-    flex-direction: row; /* Side-by-side layout */
-    align-items: flex-start; /* Align content at the top */
-    max-width: 1000px; /* Adjust as needed */
-    margin: 0 auto; /* Center the container */
-    background-color: #f5f5f5; /* Optional background */
-    border-radius: 10px; /* Optional styling */
+    flex-direction: row;
+    align-items: flex-start;
+    max-width: 1100px;
+    margin: 0 auto;
+    background-color: #f5f5f5;
+    border-radius: 10px;
     overflow: hidden;
   }
   
   .vehicle-image {
-    flex: 1; /* Takes half the container width */
-    max-width: 50%; /* Ensure it doesn't exceed half the width */
-    object-fit: cover; /* Maintain image aspect ratio */
+    flex: 1;
+    max-width: 50%;
+    object-fit: cover;
   }
   
   .vehicle-info {
-    flex: 1; /* Takes half the container width */
+    flex: 1;
     padding: 20px;
   }
   
   .vehicle-info p {
     margin: 10px 0;
     padding: 10px;
-    border-radius: 5px; /* Optional rounded corners */
+    border-radius: 5px;
   }
   
   /* Alternating background colors for info paragraphs */
   .vehicle-info p:nth-child(odd) {
-    background-color: #f0f0f0; /* Light background for odd elements */
+    background-color: #f0f0f0;
   }
   
   .vehicle-info p:nth-child(even) {
-    background-color: #e0e0e0; /* Slightly darker background for even elements */
+    background-color: #e0e0e0; 
   }
   
   .vehicle-info .details {
-    font-size: 1.5em; /* Larger font for the details heading */
+    font-size: 1.5em;
     font-weight: bold;
   }
   
+  /* *************** Login Data ****************** */
 
   form {
     width: 400px; 
