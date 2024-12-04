@@ -362,10 +362,12 @@ form label {
   font-weight: bold;
   margin-bottom: 5px;
 }
-
+form input[type="text"],
+form input[type="lastName"],
 form input[type="password"],
 form input[type="email"],
-form button[type="submit"] {
+form button[type="submit"],
+form button[type="button"] {
   width: 100%;
   padding: 10px;
   font-size: 16px;

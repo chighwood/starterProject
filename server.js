@@ -16,7 +16,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const session = require("express-session")
 const pool = require('./database/')
 const account = require("./routes/accountRoute")
-
+const bodyParser = require("body-parser");
 
 /* ***********************
  * Middleware
@@ -39,12 +39,16 @@ app.use(function(req, res, next){
   next()
 })
 
+// Body Parser
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+
 /* **********************************
 * View Engine and Templates
 * **********************************/
 app.set("view engine", "ejs")
 app.use(expressLayouts)
-app.set("layout", "./layouts/layout") // not at views root
+app.set("layout", "./layouts/layout")
 
 /* ***********************
  * Routes
