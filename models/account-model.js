@@ -14,13 +14,24 @@ async function checkExistingEmail(account_email){
 
 // Register new account
 async function registerAccount(account_firstname, account_lastname, account_email, account_password) {
-    try {
-      const sql = "INSERT INTO account (account_firstname, account_lastname, account_email, account_password, account_type) VALUES ($1, $2, $3, $4, 'Client') RETURNING *";
-      return await pool.query(sql, [account_firstname, account_lastname, account_email, account_password]);
-    } catch (error) {
-      console.error("Error registering account:", error);
-      throw error;
+  try {
+    // Log the request body to check if data is being passed correctly
+    console.log("Registration data:", { account_firstname, account_lastname, account_email, account_password });
+
+    // Check if the email already exists in the database
+    const emailExists = await checkExistingEmail(account_email);
+    if (emailExists) {
+      throw new Error("Email already registered");
     }
+
+    const sql = "INSERT INTO account (account_firstname, account_lastname, account_email, account_password, account_type) VALUES ($1, $2, $3, $4, 'Client') RETURNING *";
+    const result = await pool.query(sql, [account_firstname, account_lastname, account_email, account_password]);
+    return result;
+  } catch (error) {
+    console.error("Error in registerAccount:", error);
+    throw new Error(error.message);
   }
+}
+
 
 module.exports = { checkExistingEmail, registerAccount };

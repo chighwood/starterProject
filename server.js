@@ -16,7 +16,7 @@ const inventoryRoute = require("./routes/inventoryRoute")
 const session = require("express-session")
 const pool = require('./database/')
 const account = require("./routes/accountRoute")
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser")
 
 /* ***********************
  * Middleware
