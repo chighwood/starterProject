@@ -3,11 +3,11 @@
 <div class="container">
     <h1><%= title %></h1>
 
-    <% if (locals.message) { %>
+    <% if (message && message.length > 0) { %>
         <div class="flash-message">
-            <%= locals.message %>
+          <%= message %>
         </div>
-    <% } %>
+      <% } %>      
 
     <form action="/account/login" method="POST" class="login-form">
         <div class="form-group">
