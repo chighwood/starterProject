@@ -1,0 +1,20 @@
+<% title = "Add Classification"; %>
+
+<div class="container">
+  <h1><%= title %></h1>
+
+  <!-- <% if (message) { %>
+    <div class="flash-message">
+      <%= message %>
+    </div>
+  <% } %>       -->
+  
+
+  <!-- Form to add new classification -->
+  <form action="/inventory/add-classification" id="add-classification-form" method="POST">
+    <label for="classification_name">Classification Name:</label>
+    <input type="text" id="classification_name" name="classification_name" pattern="^[a-zA-Z0-9 ]+$" title="Classification name can contain only alphanumeric characters and spaces." required />
+
+    <button type="submit">Add Classification</button>
+  </form>
+</div>

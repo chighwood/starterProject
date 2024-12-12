@@ -1,0 +1,59 @@
+<% title = "Add New Car"; %>
+
+<div class="container">
+    <h1><%= title %></h1>
+
+    <!-- <% if (message) { %>
+      <div class="flash-message">
+        <%= message %>
+      </div>
+    <% } %>       -->
+    
+
+  <form action="/inventory/add-inventory" method="POST" class="add-inventory">
+    <h3>All Fields Are Required</h3>
+    <div>
+      <label for="classification">Classification</label>
+      <select id="classification_id" name="classification_id" required>
+        <% classifications.forEach(classification => { %>
+          <option value="<%= classification.classification_id %>">
+            <%= classification.classification_name %>
+          </option>
+        <% }) %>
+      </select>
+
+      <label for="make">Make</label>
+      <input type="text" id="inv_make" name="inv_make" required>
+
+      <label for="model">Model</label>
+      <input type="text" id="inv_model" name="inv_model" required>
+
+      <label for="year">Year</label>
+      <input type="number" id="inv_year" name="inv_year" min="1900" max="2100" step="1" required>
+
+      <label for="description">Description</label>
+      <textarea id="inv_description" name="inv_description" rows="4" cols="35" placeholder="Enter your description here..." required></textarea>
+
+      <label for="image_path">Image Path</label>
+      <input type="text" id="inv_image" name="inv_image" placeholder="/images/vehicles/no-image.png">
+
+      <label for="thumbnail_path">Thumbnail Path</label>
+      <input type="text" id="inv_thumbnail" name="inv_thumbnail" placeholder="/images/vehicles/no-image.png">
+
+      <label for="price">Price</label>
+      <input type="number" id="inv_price" name="inv_price" required>
+
+      <label for="miles">Miles</label>
+      <input type="number" id="inv_miles" name="inv_miles" required>
+
+      <label for="color">Color</label>
+      <input type="text" id="inv_color" name="inv_color" required>
+    </div>
+
+    <div>
+        <button type="submit">Submit New Car</button>
+    </div>
+  </form>
+
+</div>
+    

@@ -367,7 +367,9 @@ form input[type="lastName"],
 form input[type="password"],
 form input[type="email"],
 form button[type="submit"],
-form button[type="button"] {
+form input[type="number"],
+form button[type="button"],
+select {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -385,13 +387,12 @@ form button[type="submit"] {
   font-size: 18px;
   border-radius: 8px;
   transition: background-color 0.3s;
+  margin-top: 15px;
 }
 
 form button[type="submit"]:hover {
   background-color: #959596;
 }
-
-
 
 
 /* ************************************************************* */
