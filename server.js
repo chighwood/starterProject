@@ -17,6 +17,8 @@ const session = require("express-session")
 const pool = require('./database/')
 const account = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
+
 
 /* ***********************
  * Middleware
@@ -39,9 +41,10 @@ app.use(function(req, res, next){
   next()
 })
 
-// Body Parser
+// Body and Cookie Parser
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cookieParser())
 
 /* **********************************
 * View Engine and Templates
@@ -58,7 +61,7 @@ app.use(static);
 // Index Route
 app.get("/", utilities.handleErrors(baseController.buildHome));
 // Inventory routes
-app.use("/inventory", inventoryRoute);
+app.use("/inv", inventoryRoute);
 // Account routes
 app.use("/account", account);
 

@@ -1,10 +1,12 @@
 <% title = "Inventory Management"; %>
 
 <div class="container">
+  <%- messages() %>
     <h1><%= title %></h1>
 
     <% if (message) { %>
         <div class="flash-message">
+
           <%= message %>
         </div>
       <% } %>      
@@ -17,4 +19,18 @@
         <a href="./add-classification">Add New Classification</a>
     </p>
 
+    <h2>Manage Inventory</h2>
+    <p>Choose a classification to see those inventory items.</p>
+
+    <%- classificationSelect %>
+
+    <table id="inventoryDisplay"></table>
+
+    <noscript>JavaScript must be enabled to use this page.</noscript>
+
+
+    <script src="../../js/inventory.js"></script>
+
+
 </div>
+

@@ -3,11 +3,11 @@
 <div class="container">
     <h1><%= title %></h1>
 
-    <!-- <% if (message) { %>
+    <% if (message.local) { %>
       <div class="flash-message">
-        <%= message %>
+        <%= message.local %>
       </div>
-    <% } %>       -->
+    <% } %>      
     
 
   <form action="/inventory/add-inventory" method="POST" class="add-inventory">

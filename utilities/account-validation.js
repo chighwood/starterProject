@@ -1,11 +1,11 @@
 const utilities = require(".")
-  const { body, validationResult } = require("express-validator")
-  const validate = {}
+const { body, validationResult } = require("express-validator")
+const validate = {}
 
 /*  **********************************
 *  Registration Data Validation Rules
 * ********************************* */
-validate.registationRules = () => {
+validate.registrationRules = () => {
 return [
 // firstname is required and must be string
 body("account_firstname")
@@ -68,6 +68,36 @@ validate.checkRegData = async (req, res, next) => {
     }
     next()
   }
+
+validate.checkLoginData = (req, res, next) => {
+  const { account_email, account_password } = req.body
+  if (!account_email || !account_password) {
+    return res.status(400).json({ error: "Email and password are required." })
+  }
+  next()
+}
+
+validate.loginRules = () => {
+  return [
+    // valid email is required
+    body("account_email")
+      .trim()
+      .escape()
+      .notEmpty()
+      .withMessage("Email is required.")
+      .isEmail()
+      .withMessage("A valid email is required.")
+      .normalizeEmail(),
+    
+    // password is required
+    body("account_password")
+      .trim()
+      .notEmpty()
+      .withMessage("Password is required.")
+      .isLength({ min: 8 })
+      .withMessage("Password must be at least 8 characters long.")
+  ]
+}
   
   module.exports = validate
   

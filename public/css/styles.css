@@ -394,8 +394,29 @@ form button[type="submit"]:hover {
   background-color: #959596;
 }
 
+/* ************ Management view inventory screen tables ******************/
 
-/* ************************************************************* */
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1rem;
+}
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+
+/* ********************************************************************************************************* */
 /* Media Query for Larger Screens */
 @media (min-width: 768px) {
 
