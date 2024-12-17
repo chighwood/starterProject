@@ -18,6 +18,7 @@ const pool = require('./database/')
 const account = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
+const jwt = require("jsonwebtoken")
 
 
 /* ***********************
@@ -45,6 +46,22 @@ app.use(function(req, res, next){
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
+
+// Global Middleware to make user available in views
+app.use((req, res, next) => {
+  res.locals.user = null;
+
+  const token = req.cookies.jwt;
+  if (token) {
+    try {
+      const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+      res.locals.user = decoded;
+    } catch (error) {
+      console.error("JWT verification error:", error.message);
+    }
+  }
+  next();
+});
 
 /* **********************************
 * View Engine and Templates

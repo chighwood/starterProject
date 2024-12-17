@@ -9,16 +9,6 @@
         </div>
     <% } %>
 
-    <% if (locals.errors) { %>
-        <div class="error-message">
-            <ul>
-                <% locals.errors.forEach(function(error) { %>
-                    <li><%= error %></li>
-                <% }); %>
-            </ul>
-        </div>
-    <% } %>
-
     <form action="/account/register" method="POST" class="registration">
         <div>
             <label for="firstName">First Name</label>

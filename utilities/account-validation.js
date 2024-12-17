@@ -56,7 +56,7 @@ validate.checkRegData = async (req, res, next) => {
     errors = validationResult(req)
     if (!errors.isEmpty()) {
       let nav = await utilities.getNav()
-      res.render("account/register", {
+      return res.status(400).render("account/register", {
         errors,
         title: "Registration",
         nav,
@@ -64,7 +64,6 @@ validate.checkRegData = async (req, res, next) => {
         account_lastname,
         account_email,
       })
-      return
     }
     next()
   }

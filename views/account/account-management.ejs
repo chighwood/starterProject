@@ -1,14 +1,17 @@
 <% title = "Account Management"; %>
 
+<% if (message) { %>
+  <div class="flash-message">
+    <%= message %>
+  </div>
+<% } %>      
+
 <div class="container">
     <h1><%= title %></h1>
-
-    <% if (message) { %>
-        <div class="flash-message">
-          <%= message %>
-        </div>
-      <% } %>      
-      
-        <p>You're logged in!</p>
-
+    <p>Welcome to your account management portal, <%= user.account_firstname %>!</p>
+    <ul>
+      <li><a href="/account/account-update">Update Account Information</a></li>
+      <li><a href="/inv/management">Vehicle Inventory Management</a></li>
+      <li><a href="/account/logout">Logout</a></li>
+    </ul>  
 </div>

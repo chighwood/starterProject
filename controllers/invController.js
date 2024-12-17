@@ -72,8 +72,8 @@ invCont.addClassification = async function (req, res, next) {
   try {
     // Insert the new classification into the database
     const newClassification = await invModel.insertClassification(classification_name);
-    
-    res.redirect('/inventory/management');
+    req.flash('class', `Added new class to database.`);
+    res.redirect('/inv/management');
   } catch (err) {
     console.error("Error adding classification:", err);
     next(err);
@@ -135,7 +135,7 @@ invCont.addNewCar = async function (req, res, next) {
   } catch (error) {
     console.error("Error adding new car:", error);
     req.flash('error', 'Failed to add the vehicle. Please try again.');
-    res.redirect('/inventory/add-inventory');
+    res.redirect('/inv/add-inventory');
   }
 };
 
