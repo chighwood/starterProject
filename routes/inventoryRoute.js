@@ -26,8 +26,14 @@ router.get("/add-inventory", utilities.handleErrors(invController.buildNewCarVie
 router.post("/add-inventory", utilities.handleErrors(invController.addNewCar));
 
 // Route for updating vehicles
-router.get('/edit/:inventory_id', utilities.handleErrors(invController.buildVehicleEditView));
+router.get("/edit/:inventory_id", utilities.handleErrors(invController.buildVehicleEditView));
+
 router.post("/update/", utilities.handleErrors(invController.updateCar));
+
+// Route for deleting vehicles from the database
+router.get("/delete/:inventory_id", utilities.handleErrors(invController.buildVehicleDeleteView));
+
+router.post("/delete/", utilities.handleErrors(invController.deleteCar));
 
 
 module.exports = router;

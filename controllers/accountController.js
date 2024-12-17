@@ -142,5 +142,11 @@ async function buildDefaultManagement(req, res, next) {
   }
 };
 
+// Process logout request
+async function logoutAccount(req, res) {
+  res.clearCookie("jwt");
+  req.flash("info", "You have been successfully logged out.");
+  res.redirect("/account/login");
+}
 
-  module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildDefaultManagement };
+  module.exports = { buildLogin, buildRegister, registerAccount, accountLogin, buildDefaultManagement, logoutAccount };

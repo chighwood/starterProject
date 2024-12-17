@@ -1,0 +1,38 @@
+<% title = "Delete " + inv_make + " " + inv_model; %>
+
+
+<div class="container">
+    <h1><%= title %></h1>
+
+  <form id="deleteForm" action="/inv/delete" method="POST" class="delete-inventory">
+    
+    <div>
+      <label for="classification">Classification</label>
+      <%- classificationSelect %>
+
+      <label for="make">Make</label>
+      <input type="text" id="inv_make" name="inv_make" value="<%= inv_make %>" readonly>
+
+      <label for="model">Model</label>
+      <input type="text" id="inv_model" name="inv_model" value="<%= inv_model %>" readonly>
+
+      <label for="year">Year</label>
+      <input type="number" id="inv_year" name="inv_year" min="1900" max="2100" step="1" value="<%= inv_year %>" readonly>
+
+      <label for="price">Price</label>
+      <input type="number" id="inv_price" name="inv_price" value="<%= inv_price %>" readonly>
+
+
+    <div>
+      <p>Confirm Deletion - The delete is permanent.</p>
+        <button type="submit">Delete Vehicle</button>
+    </div>
+
+    <input type="hidden" name="inv_id"
+    <% if(inv_id) { %> value="<%= inv_id %>"
+    <% } %>>
+  </form>
+
+</div>
+
+    

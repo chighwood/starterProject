@@ -109,10 +109,12 @@ invCont.addNewCar = async function (req, res, next) {
       inv_miles,
       inv_color,
     } = req.body;
+    console.log("before adding to database")
     
     try {
 
     // Insert into the database
+    console.log("Got to insert part")
     const newCar = await invModel.insertNewCar({
       classification_id,
       inv_make,
@@ -125,10 +127,11 @@ invCont.addNewCar = async function (req, res, next) {
       inv_miles,
       inv_color,
     });
+    console.log("after console part")
 
     // Redirect with a success message
     req.flash('info', `New vehicle "${inv_make} ${inv_model}" added successfully.`);
-    res.redirect('/inventory/management');
+    res.redirect('/inv/management');
   } catch (error) {
     console.error("Error adding new car:", error);
     req.flash('error', 'Failed to add the vehicle. Please try again.');
@@ -150,7 +153,7 @@ invCont.getInventoryJSON = async (req, res, next) => {
 }
 
 
-/* ***************** Update Vehicle Function View ******************/
+/* ***************** Update Vehicle View ******************/
 
 invCont.buildVehicleEditView = async function (req, res, next) {
   const inv_id = parseInt(req.params.inventory_id)
@@ -219,7 +222,7 @@ invCont.updateCar = async function (req, res, next) {
     const itemName = `${inv_make} ${inv_model}`
 
     // Redirect with a success message
-    req.flash('info', `New vehicle "${inv_make} ${inv_model}" added successfully.`);
+    req.flash('info', `Vehicle "${inv_make} ${inv_model}" updated successfully.`);
     res.status(501).render("inventory/edit-inventory", {
     title: "Edit " + itemName,
     nav,
@@ -237,6 +240,76 @@ invCont.updateCar = async function (req, res, next) {
     inv_miles,
     inv_color
 
+    })
+  }
+};
+
+/******************* Delete Car View Function *****************/
+
+invCont.buildVehicleDeleteView = async function (req, res, next) {
+  const inv_id = parseInt(req.params.inventory_id)
+  let nav = await utilities.getNav()
+  const itemData = await invModel.getVehicleById(inv_id)
+  console.log('Retrieved vehicle:', itemData);
+  const classificationSelect = await utilities.buildClassificationList(itemData.classification_id)
+  const itemName = `${itemData.inv_make} ${itemData.inv_model}`
+  res.render("./inventory/delete-inventory", {
+    title: "Delete " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    errors: null,
+    inv_id: itemData.inv_id,
+    inv_make: itemData.inv_make,
+    inv_model: itemData.inv_model,
+    inv_year: itemData.inv_year,
+    inv_price: itemData.inv_price,
+    classification_id: itemData.classification_id
+  })
+}
+
+// Deleting Car view Function
+invCont.deleteCar = async function (req, res, next) {
+  console.log("called deletecarfunction")
+  let nav = await utilities.getNav();
+  const {
+    inv_id,
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_price,
+  } = req.body;
+
+  // Delete from the database
+  const deleteCar = await invModel.deleteCarModel({
+    inv_id,
+    inv_make,
+    inv_model,
+    inv_price,
+    inv_year,
+    classification_id
+  });
+
+  if (deleteCar) {
+    const itemName = deleteCar.inv_make + " " + deleteCar.inv_model
+    console.log("passed the if statement")
+    res.redirect("/inv/management")
+  } else {
+    const classificationSelect = await utilities.buildClassificationList(classification_id)
+    const itemName = `${inv_make} ${inv_model}`
+
+    // Redirect with a success message
+    res.status(501).render("inventory/delete-inventory", {
+    title: "Delete " + itemName,
+    nav,
+    classificationSelect: classificationSelect,
+    errors: null,
+    inv_id,
+    classification_id,
+    inv_make,
+    inv_model,
+    inv_year,
+    inv_price
     })
   }
 };

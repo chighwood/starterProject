@@ -11,4 +11,9 @@ router.get("/account-management", utilities.handleErrors(accountController.build
 router.get("/register", utilities.handleErrors(accountController.buildRegister));
 router.post("/register", regValidate.registrationRules(), regValidate.checkRegData, utilities.handleErrors(accountController.registerAccount))
 
+// router for logging out
+router.get("/logout", utilities.handleErrors(accountController.logoutAccount));
+
 module.exports = router;
+
+controller, header.ejs, account-management.ejs, accountController, accountRoute, account-model

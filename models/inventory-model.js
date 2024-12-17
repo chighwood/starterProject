@@ -123,5 +123,22 @@ async function updateCar({
   }
 }
 
+// Update car data in update view
+async function deleteCarModel({ inv_id}) {
+  try {
+    const sql = 'DELETE FROM inventory WHERE inv_id = $1 RETURNING *';
+    const result = await pool.query(sql, [inv_id]);
+    if (result.rowCount > 0) {
+      return result.rows[0];
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error("Error deleting car:", error);
+    throw new Error("Failed to delete car");
+  }
+}
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, insertClassification, insertNewCar, updateCar};
+
+
+module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, insertClassification, insertNewCar, updateCar, deleteCarModel};
