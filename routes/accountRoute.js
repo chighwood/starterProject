@@ -16,4 +16,4 @@ router.get("/logout", utilities.handleErrors(accountController.logoutAccount));
 
 module.exports = router;
 
-controller, header.ejs, account-management.ejs, accountController, accountRoute, account-model
+// controller, header.ejs, account-management.ejs, accountController, accountRoute, account-model
