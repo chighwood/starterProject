@@ -7,7 +7,10 @@ const utilities = require("../utilities");
 router.get("/management", utilities.handleErrors(invController.buildManagementView));
 
 // Route for management view
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
+
+// Route for seeing all inventory
+router.get("/allCars", utilities.handleErrors(invController.buildInventoryAllView));
 
 // Route for inventory by classification view
 router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));

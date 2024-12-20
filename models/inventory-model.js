@@ -21,6 +21,18 @@ async function getInventoryByClassificationId(classification_id) {
   }
 }
 
+//Get all inventory items by inventory id
+async function getAllInventory() {
+  try {
+    const data = await pool.query(`SELECT * FROM public.inventory;`);
+    return data.rows;
+  } catch (error) {
+    console.error("Error fetching inventory:", error);
+    throw error;
+  }
+}
+
+
 // Function to get a vehicle by ID
 async function getVehicleById(vehicleId) {
   try {
@@ -141,4 +153,4 @@ async function deleteCarModel({ inv_id}) {
 
 
 
-module.exports = {getClassifications, getInventoryByClassificationId, getVehicleById, insertClassification, insertNewCar, updateCar, deleteCarModel};
+module.exports = {getClassifications, getInventoryByClassificationId, getAllInventory, getVehicleById, insertClassification, insertNewCar, updateCar, deleteCarModel};

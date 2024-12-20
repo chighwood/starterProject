@@ -18,6 +18,30 @@ invCont.buildByClassificationId = async function (req, res, next) {
   })
 };
 
+// Build view for all inventory
+invCont.buildInventoryAllView = async function (req, res, next) {
+  try {
+    console.log("Reached Buildinventoryview")
+    const data = await invModel.getAllInventory()
+    console.log("Inventory data:", data);
+    const carGridHTML = await utilities.buildInventoryGrid(data)
+    console.log("Generated Classification Grid:", carGridHTML);
+    let nav = await utilities.getNav()
+    res.render("inventory/allCars", {
+      title: "Inventory Vehicles",
+      nav,
+      carGridHTML,
+    })
+} catch (error) {
+  console.error("Error in buildInventoryAllView:", error.message, error.stack);
+  res.status(500).render("error", {
+    title: "Error",
+    nav: await utilities.getNav(),
+    message: "An unexpected error occurred.",
+  });
+}}
+
+
 // Function for vehicle detail view
 invCont.buildDetailView = async function (req, res, next) {
   const vehicleId = req.params.vehicleId;
